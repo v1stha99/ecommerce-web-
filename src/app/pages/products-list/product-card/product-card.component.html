@@ -1,0 +1,23 @@
+<div class="product-card">
+    <div class="product-image">
+      <img [src]="product.image" alt="Product Image" />
+    </div>
+    <div class="product-details">
+      <span class="product-title">{{ product.title }}</span>
+      <span class="product-price">{{ '$' + product.price }}</span>
+      <app-primary-button
+        [label]="'Add to Cart'"
+        [disabled]="!product.stock"
+        (btnClicked)="addToCart()"
+        class="add-to-cart-btn"
+      ></app-primary-button>
+    </div>
+  
+    <span
+      class="stock-status"
+      [ngClass]="{'in-stock': product.stock, 'out-of-stock': !product.stock}"
+    >
+      {{ product.stock ? product.stock + ' left' : 'Out of stock' }}
+    </span>
+  </div>
+  
